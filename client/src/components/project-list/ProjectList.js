@@ -14,7 +14,7 @@ const ProjectList = () => {
 
   const projectsList = projects.length
     ? projects.map(project => (
-        <ProjectItem key={project.id} name={project.name} id={project.name} />
+        <ProjectItem key={project.id} name={project.name} id={project.id} />
       ))
     : "Loading projects...";
 

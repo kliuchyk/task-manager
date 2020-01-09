@@ -1,0 +1,39 @@
+.project {
+  width: 600px;
+  margin: 20px auto;
+}
+
+.project-header {
+  display: flex;
+  background: #0c3f74;
+  color: #fff;
+  height: 40px;
+  padding: 15px 25px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-icon {
+  flex-basis: 15%;
+}
+
+.project-name {
+  flex-basis: 65%;
+  text-align: left;
+}
+
+.actions {
+  flex-basis: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.action {
+  cursor: pointer;
+  line-height: 40px;
+  flex-basis: 50%;
+}
+
+.action:hover {
+  background: #008cff;
+}

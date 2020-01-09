@@ -19,3 +19,13 @@ export const createProject = name => {
     .then(res => res.text())
     .then(data => console.log(data));
 };
+
+export const deleteProject = id => {
+  fetch(`${API}/${id}`, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json; charset=UTF-8" },
+    body: JSON.stringify({ id })
+  })
+    .then(res => res.text())
+    .then(data => console.log(data));
+};
