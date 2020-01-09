@@ -29,3 +29,11 @@ export const deleteProject = id => {
     .then(res => res.text())
     .then(data => console.log(data));
 };
+
+export const editProjectName = (id, name) => {
+  fetch(`${API}/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json; charset=UTF-8" },
+    body: JSON.stringify({ name })
+  });
+};

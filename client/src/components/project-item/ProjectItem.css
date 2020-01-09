@@ -38,3 +38,12 @@
 .action:hover {
   background: #008cff;
 }
+
+.edit-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: inherit;
+}

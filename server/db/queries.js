@@ -45,16 +45,18 @@ const createProject = (request, response) => {
 
 const updateProject = (request, response) => {
   const id = parseInt(request.params.id);
-  const { name, email } = request.body;
+  const { name } = request.body;
 
   pool.query(
-    "UPDATE projects SET name = $1, email = $2 WHERE id = $3",
-    [name, email, id],
+    "UPDATE projects SET name = $1 WHERE id = $2",
+    [name, id],
     (error, results) => {
       if (error) {
         throw error;
       }
-      response.status(200).send(`User modified with ID: ${id}`);
+      response
+        .status(200)
+        .send(`Project modified with ID: ${id} and new name: ${name}`);
     }
   );
 };
