@@ -1,5 +1,11 @@
 const API = "http://localhost:4000/projects";
 
+export const getAllProjects = async () => {
+  const response = await fetch(API).then(res => res.json());
+  const projects = await response;
+  return projects;
+};
+
 export const createProject = name => {
   fetch(API, {
     method: "POST",
