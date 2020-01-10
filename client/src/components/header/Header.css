@@ -1,8 +1,14 @@
 .app-header {
-  margin: 45px 0;
-  height: 75;
+  margin: 35px 0;
+  height: 75px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: #283655;
+}
+
+.sub-header {
+  font-size: 16px;
+  color: #4d648d;
 }

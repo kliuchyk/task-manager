@@ -5,7 +5,7 @@ const Component = () => {
   return (
     <header className="app-header">
       <h1>SIMPLE TODO LISTS</h1>
-      <h2>FROM XYZ COMPANY</h2>
+      <h2 className="sub-header">FROM XYZ COMPANY</h2>
     </header>
   );
 };
