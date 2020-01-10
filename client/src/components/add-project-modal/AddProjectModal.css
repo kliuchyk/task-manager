@@ -1,0 +1,90 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-form {
+  width: 450px;
+  position: fixed;
+  background: #fff;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 7px;
+  border: 3px solid #707d88;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.modal-header {
+  color: #4a535b;
+  font-size: 30px;
+}
+
+.modal-close-btn {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  font-size: 35px;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.form-input,
+.btn {
+  padding: 10px;
+  font-size: 18px;
+  color: #707d88;
+  border-radius: 4px;
+  outline: none;
+}
+
+.form-input {
+  width: 100%;
+  border: 1px solid #a4a5a7;
+}
+
+.modal-actions {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.btn {
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  width: 40%;
+}
+
+.close-btn {
+  background: #cf8787;
+}
+
+.close-btn:hover {
+  background: #c75c5c;
+}
+
+.submit-btn {
+  background: #6ead6e;
+}
+
+.submit-btn:hover {
+  background: #4ea04e;
+}
