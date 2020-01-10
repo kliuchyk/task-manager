@@ -37,7 +37,7 @@ const createProject = (request, response) => {
       if (error) {
         throw error;
       }
-      response.status(201).send(`Project added with ID: ${result.rows[0].id}`);
+      response.status(201).send({ id: result.rows[0].id, name });
     }
   );
 };
@@ -53,9 +53,7 @@ const updateProject = (request, response) => {
       if (error) {
         throw error;
       }
-      response
-        .status(200)
-        .send(`Project modified with ID: ${id} and new name: ${name}`);
+      response.status(200).send({ id, name });
     }
   );
 };
@@ -67,7 +65,7 @@ const deleteProject = (request, response) => {
     if (error) {
       throw error;
     }
-    response.status(200).send(`Project deleted with ID: ${id}`);
+    response.status(200).send({ id });
   });
 };
 

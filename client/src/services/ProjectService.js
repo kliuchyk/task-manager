@@ -1,13 +1,13 @@
 const API = "http://localhost:4000/projects";
 
-export const getAllProjects = async () => {
+export const getAllProjectsService = async () => {
   const response = await fetch(API).then(res => res.json());
   const projects = await response;
   return projects;
 };
 
-export const createProject = name => {
-  fetch(API, {
+export const createProjectService = name => {
+  return fetch(API, {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=UTF-8"
@@ -15,23 +15,19 @@ export const createProject = name => {
     body: JSON.stringify({
       name
     })
-  })
-    .then(res => res.text())
-    .then(data => console.log(data));
+  });
 };
 
-export const deleteProject = id => {
-  fetch(`${API}/${id}`, {
+export const deleteProjectService = id => {
+  return fetch(`${API}/${id}`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json; charset=UTF-8" },
     body: JSON.stringify({ id })
-  })
-    .then(res => res.text())
-    .then(data => console.log(data));
+  });
 };
 
-export const editProjectName = (id, name) => {
-  fetch(`${API}/${id}`, {
+export const editProjectService = (id, name) => {
+  return fetch(`${API}/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json; charset=UTF-8" },
     body: JSON.stringify({ name })

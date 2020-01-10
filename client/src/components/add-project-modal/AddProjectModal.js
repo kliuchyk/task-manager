@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { createProject } from "../../services/ProjectService";
+import React, { useState, useContext } from "react";
+import { createProjectService } from "../../services/ProjectService";
+import { Context } from "../../context";
 import "./AddProjectModal.css";
 
 const AddProjectForm = ({ isOpen, hideModal }) => {
   const [projectName, setProjectName] = useState("");
+  const { addNewProject } = useContext(Context);
 
   const showHideClassName = isOpen
     ? "modal display-block"
@@ -11,7 +13,11 @@ const AddProjectForm = ({ isOpen, hideModal }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    createProject(projectName);
+
+    createProjectService(projectName)
+      .then(res => res.json())
+      .then(data => addNewProject(data));
+
     setProjectName("");
     hideModal();
   };

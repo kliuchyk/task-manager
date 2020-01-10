@@ -1,17 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ProjectItem from "../project-item/ProjectItem";
-import { getAllProjects } from "../../services/ProjectService";
 
-const ProjectList = () => {
-  const [projects, setProjects] = useState([]);
-
-  useEffect(() => {
-    (async () => {
-      const projectsFromAPI = await getAllProjects();
-      setProjects(projectsFromAPI);
-    })();
-  }, []);
-
+const ProjectList = ({ projects }) => {
   const projectsList = projects.length
     ? projects.map(project => (
         <ProjectItem key={project.id} name={project.name} id={project.id} />

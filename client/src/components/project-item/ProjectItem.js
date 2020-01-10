@@ -1,11 +1,27 @@
-import React, { useState } from "react";
-import { deleteProject } from "../../services/ProjectService";
+import React, { useState, useContext } from "react";
+import {
+  deleteProjectService,
+  editProjectService
+} from "../../services/ProjectService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { editProjectName } from "../../services/ProjectService";
+import { Context } from "../../context";
 import "./ProjectItem.css";
 
 const ProjectItem = ({ name, id }) => {
   const [newName, setNewName] = useState(name);
+  const { editProject, deleteProject } = useContext(Context);
+
+  const handleEdit = () => {
+    editProjectService(id, newName)
+      .then(res => res.json())
+      .then(updatedProject => editProject(updatedProject));
+  };
+
+  const handleDelete = () => {
+    deleteProjectService(id)
+      .then(res => res.json())
+      .then(project => deleteProject(project.id));
+  };
 
   return (
     <div className="project">
@@ -22,10 +38,10 @@ const ProjectItem = ({ name, id }) => {
           />
         </h3>
         <span className="actions">
-          <span className="action" onClick={() => editProjectName(id, newName)}>
+          <span className="action" onClick={handleEdit}>
             <FontAwesomeIcon className="faicons" icon="edit" />
           </span>
-          <span className="action" onClick={() => deleteProject(id)}>
+          <span className="action" onClick={handleDelete}>
             <FontAwesomeIcon className="faicons" icon="trash" />
           </span>
         </span>
