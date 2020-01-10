@@ -29,7 +29,6 @@ const getProjectById = (request, response) => {
 
 const createProject = (request, response) => {
   const { name } = request.body;
-  console.log(request.body);
 
   pool.query(
     "INSERT INTO projects (name) VALUES ($1) RETURNING id",
