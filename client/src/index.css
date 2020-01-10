@@ -24,6 +24,8 @@ body {
     #00b26d,
     #8fbf25
   );
+
+  background-attachment: fixed;
 }
 
 code {
