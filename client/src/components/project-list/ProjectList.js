@@ -1,5 +1,6 @@
 import React from "react";
 import ProjectItem from "../project-item/ProjectItem";
+import "./ProjectList.css";
 
 const ProjectList = ({ projects }) => {
   const projectsList = projects.length
@@ -8,7 +9,7 @@ const ProjectList = ({ projects }) => {
       ))
     : "Loading projects...";
 
-  return <ul>{projectsList}</ul>;
+  return <ul className="projects-list">{projectsList}</ul>;
 };
 
 export default ProjectList;
