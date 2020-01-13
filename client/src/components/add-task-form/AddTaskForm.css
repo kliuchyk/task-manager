@@ -1,0 +1,39 @@
+.add-task-form {
+  background: #ddd;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-task-name,
+.add-btn {
+  height: 30px;
+  padding: 7px 20px;
+  outline: none;
+  font-size: 14px;
+}
+
+.add-btn {
+  cursor: pointer;
+  line-height: 30px;
+  background: #3d743d;
+  color: #fff;
+  padding: 0 20px;
+  font-weight: bold;
+  border-left: none;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.input-task-name {
+  width: 65%;
+}
+
+.add-task-form .faicons {
+  margin-right: 35px;
+  color: #3d743d;
+  font-size: 22px;
+  font-weight: bold;
+}
