@@ -1,0 +1,15 @@
+.task-container {
+  padding: 0 28px;
+  display: flex;
+  justify-content: space-between;
+  height: 32px;
+  align-items: center;
+  background: #f3f3f3;
+  border-bottom: 1px solid #d0d0d0;
+  border-right: 1px solid #d0d0d0;
+  border-left: 1px solid #d0d0d0;
+}
+
+.task-container:first-of-type {
+  border-top: 1px solid #d0d0d0;
+}
