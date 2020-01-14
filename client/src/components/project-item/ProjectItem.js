@@ -48,7 +48,7 @@ const ProjectItem = ({ name, id, tasks }) => {
           </span>
         </span>
       </header>
-      <AddTaskForm />
+      <AddTaskForm projectId={id} />
       <TaskList tasks={tasks} projectId={id} />
     </div>
   );

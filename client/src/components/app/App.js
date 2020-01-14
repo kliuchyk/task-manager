@@ -51,6 +51,28 @@ const App = () => {
     setProjects(projects.filter(project => project.id !== id));
   };
 
+  const addNewTask = (newTask, projectId) => {
+    setProjects(
+      projects.map(project => {
+        if (project.id === projectId) {
+          if (project.tasks) {
+            return {
+              ...project,
+              tasks: [...project.tasks, newTask]
+            };
+          } else {
+            return {
+              ...project,
+              tasks: [newTask]
+            };
+          }
+        }
+
+        return project;
+      })
+    );
+  };
+
   const deleteTask = (projId, taskId) => {
     setProjects(
       projects.map(project => {
@@ -71,7 +93,8 @@ const App = () => {
         addNewProject,
         editProject,
         deleteProject,
-        deleteTask
+        deleteTask,
+        addNewTask
       }}
     >
       <div className="App">

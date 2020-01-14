@@ -28,11 +28,11 @@ const getTaskById = (request, response) => {
 };
 
 const createTask = (request, response) => {
-  const { name } = request.body;
+  const { name, project_id } = request.body;
 
   pool.query(
-    "INSERT INTO tasks (name) VALUES ($1) RETURNING id",
-    [name],
+    "INSERT INTO tasks (name, project_id) VALUES ($1, $2) RETURNING id",
+    [name, project_id],
     (error, result) => {
       if (error) {
         throw error;
