@@ -1,4 +1,6 @@
 import React, { useState, useContext } from "react";
+import AddTaskForm from "../add-task-form/AddTaskForm";
+import TaskList from "../task-list/TaskList";
 import {
   deleteProjectService,
   editProjectService
@@ -7,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Context } from "../../context";
 import "./ProjectItem.css";
 
-const ProjectItem = ({ name, id }) => {
+const ProjectItem = ({ name, id, tasks }) => {
   const [newName, setNewName] = useState(name);
   const { editProject, deleteProject } = useContext(Context);
 
@@ -46,6 +48,8 @@ const ProjectItem = ({ name, id }) => {
           </span>
         </span>
       </header>
+      <AddTaskForm />
+      <TaskList tasks={tasks} />
     </div>
   );
 };

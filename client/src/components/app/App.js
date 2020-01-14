@@ -4,6 +4,7 @@ import AddProjectModal from "../add-project-modal/AddProjectModal";
 import ProjectList from "../project-list/ProjectList";
 import { Context } from "../../context";
 import { getAllProjectsService } from "../../services/ProjectService";
+import { getAllTasksService } from "../../services/TaskService";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faTrash,
