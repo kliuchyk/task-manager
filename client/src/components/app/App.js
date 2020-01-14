@@ -4,18 +4,18 @@ import AddProjectModal from "../add-project-modal/AddProjectModal";
 import ProjectList from "../project-list/ProjectList";
 import { Context } from "../../context";
 import { getAllProjectsService } from "../../services/ProjectService";
-import { getAllTasksService } from "../../services/TaskService";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faTrash,
   faEdit,
   faListAlt,
-  faPlus
+  faPlus,
+  faAngleUp
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./App.css";
 
-library.add(faTrash, faEdit, faListAlt, faPlus);
+library.add(faTrash, faEdit, faListAlt, faPlus, faAngleUp);
 
 const App = () => {
   const [projects, setProjects] = useState([]);
@@ -51,12 +51,27 @@ const App = () => {
     setProjects(projects.filter(project => project.id !== id));
   };
 
+  const deleteTask = (projId, taskId) => {
+    setProjects(
+      projects.map(project => {
+        if (project.id === projId) {
+          return {
+            ...project,
+            tasks: project.tasks.filter(task => task.id !== taskId)
+          };
+        }
+        return project;
+      })
+    );
+  };
+
   return (
     <Context.Provider
       value={{
         addNewProject,
         editProject,
-        deleteProject
+        deleteProject,
+        deleteTask
       }}
     >
       <div className="App">

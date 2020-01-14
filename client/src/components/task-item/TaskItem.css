@@ -2,14 +2,29 @@
   padding: 0 28px;
   display: flex;
   justify-content: space-between;
-  height: 32px;
+  height: 38px;
   align-items: center;
   background: #f3f3f3;
   border-bottom: 1px solid #d0d0d0;
   border-right: 1px solid #d0d0d0;
   border-left: 1px solid #d0d0d0;
+  color: #747272;
 }
 
 .task-container:first-of-type {
   border-top: 1px solid #d0d0d0;
+}
+
+.task-controls .faicons {
+  cursor: pointer;
+  font-size: 14px;
+  color: #999;
+}
+
+.task-controls .faicons:nth-child(2) {
+  margin: 0 10px;
+}
+
+.task-controls .faicons:hover {
+  color: #747272;
 }

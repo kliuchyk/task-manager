@@ -23,6 +23,7 @@ app.put("/projects/:id", db.updateProject);
 app.delete("/projects/:id", db.deleteProject);
 
 app.get("/tasks", dbTasks.getAllTasks);
+app.delete("/tasks/:id", dbTasks.deleteTask);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);

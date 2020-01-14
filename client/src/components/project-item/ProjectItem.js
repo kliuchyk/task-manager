@@ -49,7 +49,7 @@ const ProjectItem = ({ name, id, tasks }) => {
         </span>
       </header>
       <AddTaskForm />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} projectId={id} />
     </div>
   );
 };
