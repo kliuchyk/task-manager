@@ -5,6 +5,7 @@ import "./AddProjectModal.css";
 
 const AddProjectForm = ({ isOpen, hideModal }) => {
   const [projectName, setProjectName] = useState("");
+  const [isEmptySubmit, setIsEmptySubmit] = useState(false);
   const { addNewProject } = useContext(Context);
 
   const showHideClassName = isOpen
@@ -14,30 +15,51 @@ const AddProjectForm = ({ isOpen, hideModal }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    createProjectService(projectName)
-      .then(res => res.json())
-      .then(data => addNewProject(data));
+    if (projectName !== "") {
+      createProjectService(projectName)
+        .then(res => res.json())
+        .then(data => addNewProject(data));
 
-    setProjectName("");
-    hideModal();
+      setProjectName("");
+      hideModal();
+
+      if (isEmptySubmit) {
+        setIsEmptySubmit(false);
+      }
+    } else {
+      setIsEmptySubmit(true);
+    }
   };
 
   return (
     <div className={showHideClassName}>
       <form className="modal-form" onSubmit={handleSubmit}>
-        <span className="modal-close-btn" onClick={hideModal}>
+        <span
+          className="modal-close-btn"
+          onClick={() => {
+            hideModal();
+            setIsEmptySubmit(false);
+          }}
+        >
           +
         </span>
         <h2 className="modal-header">Add new project</h2>
         <input
-          className="form-input"
+          className={isEmptySubmit ? "form-input error" : "form-input"}
           type="text"
           value={projectName}
           placeholder="Name your next project..."
           onChange={e => setProjectName(e.target.value)}
         />
         <div className="modal-actions">
-          <button className="btn close-btn" onClick={hideModal}>
+          <button
+            className="btn close-btn"
+            onClick={e => {
+              e.preventDefault();
+              hideModal();
+              setIsEmptySubmit(false);
+            }}
+          >
             Close
           </button>
           <button className="btn submit-btn">Add new project</button>

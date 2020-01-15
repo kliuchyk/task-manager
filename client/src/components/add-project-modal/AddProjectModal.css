@@ -88,3 +88,7 @@
 .submit-btn:hover {
   background: #4ea04e;
 }
+
+.error {
+  border: 2px solid #e73434;
+}
