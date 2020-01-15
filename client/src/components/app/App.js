@@ -40,7 +40,10 @@ const App = () => {
     setProjects(
       projects.map(project => {
         if (project.id === updatedProject.id) {
-          return updatedProject;
+          return {
+            ...project,
+            name: updatedProject.name
+          };
         }
         return project;
       })
