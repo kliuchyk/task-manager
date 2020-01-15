@@ -10,10 +10,13 @@ const AddTaskForm = ({ projectId }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    addNewTaskService(taskName, projectId)
-      .then(res => res.json())
-      .then(newTask => addNewTask(newTask, projectId))
-      .then(result => setTaskName(""));
+
+    if (taskName !== "") {
+      addNewTaskService(taskName, projectId)
+        .then(res => res.json())
+        .then(newTask => addNewTask(newTask, projectId))
+        .then(result => setTaskName(""));
+    }
   };
 
   return (
