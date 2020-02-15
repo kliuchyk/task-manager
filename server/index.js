@@ -24,6 +24,7 @@ app.delete("/projects/:id", db.deleteProject);
 
 app.get("/tasks", dbTasks.getAllTasks);
 app.post("/tasks/", dbTasks.createTask);
+app.put("/tasks/:id", dbTasks.updateTask);
 app.delete("/tasks/:id", dbTasks.deleteTask);
 
 app.listen(port, () => {

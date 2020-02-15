@@ -1,12 +1,29 @@
-import React, { useContext } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./TaskItem.css";
-import { Context } from "../../context";
-import { deleteTaskService } from "../../services/TaskService";
+import React, { useContext } from 'react';
+import { deleteTaskService, editTaskService } from '../../services/TaskService';
+import { Context } from '../../context';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './TaskItem.css';
 
 const TaskItem = ({ details, projectId }) => {
-  const { name, id } = details;
-  const { deleteTask } = useContext(Context);
+  const { id, name, completed } = details;
+  const { deleteTask, editTask } = useContext(Context);
+
+  const handleChange = event => {
+    const target = event.target;
+    const name = target.name;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+
+    const taskItem = {
+      ...details,
+      [name]: value,
+    };
+
+    console.log(taskItem);
+
+    editTaskService(id, taskItem)
+      .then(res => res.json())
+      .then(task => editTask(projectId, id, task));
+  };
 
   const handleDelete = () => {
     const taskId = id;
@@ -18,8 +35,18 @@ const TaskItem = ({ details, projectId }) => {
 
   return (
     <div className="task-container">
-      <input type="checkbox" />
-      <span>{name}</span>
+      <input
+        type="checkbox"
+        name="completed"
+        value={completed}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="name"
+        value={name}
+        onChange={handleChange}
+      />
       <div className="task-controls">
         <FontAwesomeIcon className="faicons" icon="angle-up" />
         <FontAwesomeIcon className="faicons" icon="edit" />

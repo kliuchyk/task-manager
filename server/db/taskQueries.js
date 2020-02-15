@@ -1,14 +1,14 @@
-const Pool = require("pg").Pool;
+const Pool = require('pg').Pool;
 const pool = new Pool({
-  user: "me",
-  host: "localhost",
-  database: "api",
-  password: "password",
+  user: 'me',
+  host: 'localhost',
+  database: 'api',
+  password: 'password',
   port: 5432
 });
 
 const getAllTasks = (request, response) => {
-  pool.query("SELECT * FROM tasks ORDER BY id ASC", (error, results) => {
+  pool.query('SELECT * FROM tasks ORDER BY id ASC', (error, results) => {
     if (error) {
       throw error;
     }
@@ -19,7 +19,7 @@ const getAllTasks = (request, response) => {
 const getTaskById = (request, response) => {
   const id = parseInt(request.params.id);
 
-  pool.query("SELECT * FROM tasks WHERE id = $1", [id], (error, results) => {
+  pool.query('SELECT * FROM tasks WHERE id = $1', [id], (error, results) => {
     if (error) {
       throw error;
     }
@@ -31,7 +31,7 @@ const createTask = (request, response) => {
   const { name, project_id } = request.body;
 
   pool.query(
-    "INSERT INTO tasks (name, project_id) VALUES ($1, $2) RETURNING id",
+    'INSERT INTO tasks (name, project_id) VALUES ($1, $2) RETURNING id',
     [name, project_id],
     (error, result) => {
       if (error) {
@@ -44,16 +44,18 @@ const createTask = (request, response) => {
 
 const updateTask = (request, response) => {
   const id = parseInt(request.params.id);
-  const { name } = request.body;
+  const { name, project_id, priority, completed } = request.body;
+
+  console.log(name, id, project_id, priority, completed);
 
   pool.query(
-    "UPDATE tasks SET name = $1 WHERE id = $2",
-    [name, id],
+    'UPDATE tasks SET name = $1, completed = $2 WHERE id = $3',
+    [name, completed, id],
     (error, results) => {
       if (error) {
         throw error;
       }
-      response.status(200).send({ id, name });
+      response.status(200).send({ id, name, completed });
     }
   );
 };
@@ -61,7 +63,7 @@ const updateTask = (request, response) => {
 const deleteTask = (request, response) => {
   const id = parseInt(request.params.id);
 
-  pool.query("DELETE FROM tasks WHERE id = $1", [id], (error, results) => {
+  pool.query('DELETE FROM tasks WHERE id = $1', [id], (error, results) => {
     if (error) {
       throw error;
     }
