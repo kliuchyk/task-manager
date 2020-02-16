@@ -28,16 +28,16 @@ const getTaskById = (request, response) => {
 };
 
 const createTask = (request, response) => {
-  const { name, project_id } = request.body;
+  const { name, project_id, priority } = request.body;
 
   pool.query(
-    'INSERT INTO tasks (name, project_id) VALUES ($1, $2) RETURNING id',
-    [name, project_id],
+    'INSERT INTO tasks (name, project_id, priority) VALUES ($1, $2, $3) RETURNING id',
+    [name, project_id, priority],
     (error, result) => {
       if (error) {
         throw error;
       }
-      response.status(201).send({ id: result.rows[0].id, name });
+      response.status(201).send({ id: result.rows[0].id, name, priority });
     }
   );
 };
@@ -46,18 +46,28 @@ const updateTask = (request, response) => {
   const id = parseInt(request.params.id);
   const { name, project_id, priority, completed } = request.body;
 
-  console.log(name, id, project_id, priority, completed);
-
-  pool.query(
-    'UPDATE tasks SET name = $1, completed = $2 WHERE id = $3',
-    [name, completed, id],
-    (error, results) => {
-      if (error) {
-        throw error;
+  if (priority) {
+    console.log('with PRIORITY');
+    // pool.query(
+    //   `UPDATE tasks SET priority = CASE id
+    //     WHEN 1 THEN 'one new value'
+    //     WHEN 2 THEN 'a different new value'
+    //   END
+    //   WHERE id in (1,2,3,...)`
+    // )
+  } else {
+    console.log('Regular edit');
+    pool.query(
+      'UPDATE tasks SET name = $1, completed = $2 WHERE id = $3',
+      [name, completed, id],
+      (error, results) => {
+        if (error) {
+          throw error;
+        }
+        response.status(200).send({ id, name, completed });
       }
-      response.status(200).send({ id, name, completed });
-    }
-  );
+    );
+  }
 };
 
 const deleteTask = (request, response) => {

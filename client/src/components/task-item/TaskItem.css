@@ -1,7 +1,6 @@
 .task-container {
   padding: 0 28px;
   display: flex;
-  justify-content: space-between;
   height: 38px;
   align-items: center;
   background: #f3f3f3;
@@ -11,8 +10,31 @@
   color: #747272;
 }
 
+.task-container:hover {
+  cursor: pointer;
+  background: #f5f5c8;
+}
+
+.task-container:hover .task-controls {
+  visibility: visible;
+}
+
 .task-container:first-of-type {
   border-top: 1px solid #d0d0d0;
+}
+
+.task-container:last-of-type {
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.task-controls {
+  visibility: hidden;
+  padding: 0 14px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .task-controls .faicons {
@@ -21,10 +43,26 @@
   color: #999;
 }
 
-.task-controls .faicons:nth-child(2) {
-  margin: 0 10px;
-}
-
 .task-controls .faicons:hover {
   color: #747272;
+}
+
+.task-complete-input {
+  margin-right: 20px;
+}
+
+.task-name-input {
+  width: 400px;
+  border: none;
+  background: inherit;
+  outline: none;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.priority-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

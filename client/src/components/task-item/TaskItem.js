@@ -38,18 +38,23 @@ const TaskItem = ({ details, projectId }) => {
       <input
         type="checkbox"
         name="completed"
-        value={completed}
+        checked={completed}
+        className="task-complete-input"
         onChange={handleChange}
       />
       <input
         type="text"
         name="name"
         value={name}
+        className="task-name-input"
         onChange={handleChange}
       />
       <div className="task-controls">
-        <FontAwesomeIcon className="faicons" icon="angle-up" />
-        <FontAwesomeIcon className="faicons" icon="edit" />
+        <span className="priority-actions">
+          <FontAwesomeIcon className="faicons" icon="caret-up" onClick={() => console.log('UP')} />
+          <FontAwesomeIcon className="faicons" icon="caret-down" onClick={() => console.log('DOWN')} />
+        </span>
+        <FontAwesomeIcon className="faicons edit" icon="edit" />
         <FontAwesomeIcon
           className="faicons"
           icon="trash"

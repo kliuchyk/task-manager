@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from 'react';
+
 import Header from '../header/Header';
 import AddProjectModal from '../add-project-modal/AddProjectModal';
 import ProjectList from '../project-list/ProjectList';
+
 import { Context } from '../../context';
 import { getAllProjectsService } from '../../services/ProjectService';
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faTrash,
   faEdit,
   faListAlt,
   faPlus,
-  faAngleUp
+  faCaretDown,
+  faCaretUp
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import './App.css';
 
-library.add(faTrash, faEdit, faListAlt, faPlus, faAngleUp);
+library.add(faTrash, faEdit, faListAlt, faPlus, faCaretDown, faCaretUp);
 
 const App = () => {
   const [projects, setProjects] = useState([]);

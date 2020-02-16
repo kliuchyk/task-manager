@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const db = require("./db/queries");
+const db = require("./db/projectQueries");
 const dbTasks = require("./db/taskQueries");
 const cors = require("cors");
 

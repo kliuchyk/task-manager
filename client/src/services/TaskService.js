@@ -6,13 +6,14 @@ export const getAllTasksService = async () => {
   return tasks;
 };
 
-export const addNewTaskService = (name, projectId) => {
+export const addNewTaskService = (name, projectId, priority) => {
   return fetch(API, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json; charset=UTF-8' },
     body: JSON.stringify({
       name,
-      project_id: projectId
+      project_id: projectId,
+      priority
     })
   });
 };
