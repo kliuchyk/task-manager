@@ -5,7 +5,8 @@ const dbTasks = require("./db/taskQueries");
 const cors = require("cors");
 
 const app = express();
-const port = 4000;
+
+const PORT = process.env.PORT || 80;
 const origin = "http://localhost:3000";
 
 app.use(bodyParser.json());
@@ -27,6 +28,6 @@ app.post("/tasks/", dbTasks.createTask);
 app.put("/tasks/:id", dbTasks.updateTask);
 app.delete("/tasks/:id", dbTasks.deleteTask);
 
-app.listen(port, () => {
-  console.log(`App running on port ${port}.`);
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}.`);
 });

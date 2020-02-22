@@ -1,10 +1,8 @@
+const dbConfig = require('./configs');
+
 const Pool = require("pg").Pool;
 const pool = new Pool({
-  user: "me",
-  host: "localhost",
-  database: "api",
-  password: "password",
-  port: 5432
+  ...dbConfig
 });
 
 const getProjects = (request, response) => {

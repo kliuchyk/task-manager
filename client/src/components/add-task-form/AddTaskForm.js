@@ -13,7 +13,7 @@ const AddTaskForm = ({ projectId, tasks }) => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const priority = tasks.length ? tasks.length + 1 : 1;
+    const priority = tasks ? tasks.length + 1 : 1;
 
     if (taskName !== "") {
       addNewTaskService(taskName, projectId, priority)
